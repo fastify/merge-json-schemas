@@ -1,4 +1,4 @@
-# merge-json-schema
+# @fastify/merge-json-schema
 
 __merge-json-schema__ is a javascript library that build a logical product (AND) for multiple [JSON schemas](https://json-schema.org/draft/2020-12/json-schema-core#name-introduction).
 
@@ -15,7 +15,7 @@ __merge-json-schema__ is a javascript library that build a logical product (AND)
 ## Installation
 
 ```bash
-npm install merge-json-schema
+npm install @fastify/merge-json-schema
 ```
 
 <a name="usage"></a>
