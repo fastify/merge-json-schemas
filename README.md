@@ -1,6 +1,6 @@
-# @fastify/merge-json-schema
+# @fastify/merge-json-schemas
 
-__merge-json-schema__ is a javascript library that build a logical product (AND) for multiple [JSON schemas](https://json-schema.org/draft/2020-12/json-schema-core#name-introduction).
+__merge-json-schemas__ is a javascript library that build a logical product (AND) for multiple [JSON schemas](https://json-schema.org/draft/2020-12/json-schema-core#name-introduction).
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -15,7 +15,7 @@ __merge-json-schema__ is a javascript library that build a logical product (AND)
 ## Installation
 
 ```bash
-npm install @fastify/merge-json-schema
+npm install @fastify/merge-json-schemas
 ```
 
 <a name="usage"></a>
@@ -24,7 +24,7 @@ npm install @fastify/merge-json-schema
 
 ```javascript
 const assert = require('node:assert')
-const { mergeSchemas } = require('merge-json-schema')
+const { mergeSchemas } = require('@fastify/merge-json-schemas');
 
 const schema1 = {
   $id: 'schema1',
