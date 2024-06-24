@@ -34,6 +34,7 @@
     "tsd": "^0.30.3"
   },
   "dependencies": {
+    "dequal": "^2.0.3",
     "fast-deep-equal": "^3.1.3"
   }
 }
