@@ -8,9 +8,9 @@
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
+    "test": "npm run test:unit && npm run test:types",
     "test:unit": "c8 --100 node --test",
-    "test:types": "tsd",
-    "test": "npm run lint && npm run test:unit && npm run test:types"
+    "test:types": "tsd"
   },
   "repository": {
     "type": "git",
