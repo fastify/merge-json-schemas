@@ -1,6 +1,6 @@
 'use strict'
 
-const deepEqual = require('fast-deep-equal')
+const { dequal: deepEqual } = require('dequal')
 const resolvers = require('./lib/resolvers')
 const errors = require('./lib/errors')
 
