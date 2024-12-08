@@ -52,11 +52,10 @@ export type MergeOptions = {
   defaultResolver?: KeywordResolver,
   resolvers?: Partial<KeywordResolvers>,
   // enum of ["throw", "skip", "first"]
-  onConflict?: "throw" | "skip" | "first"
+  onConflict?: 'throw' | 'skip' | 'first'
 }
 
-export function mergeSchemas(schemas: any[], options?: MergeOptions): any;
+export function mergeSchemas (schemas: any[], options?: MergeOptions): any
 
 export const keywordsResolvers: KeywordResolvers
 export const defaultResolver: KeywordResolver
-

@@ -6,8 +6,8 @@
   "type": "commonjs",
   "types": "types/index.d.ts",
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "test": "npm run test:unit && npm run test:types",
     "test:unit": "c8 --100 node --test",
     "test:types": "tsd"
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@fastify/pre-commit": "^2.1.0",
     "c8": "^8.0.1",
-    "standard": "^17.1.0",
+    "neostandard": "^0.11.9",
     "tsd": "^0.30.3"
   },
   "dependencies": {
