@@ -28,6 +28,16 @@
     "url": "https://github.com/fastify/merge-json-schemas/issues"
   },
   "homepage": "https://github.com/fastify/merge-json-schemas#readme",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/fastify"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/fastify"
+    }
+  ],
   "devDependencies": {
     "@fastify/pre-commit": "^2.1.0",
     "c8": "^10.1.3",
