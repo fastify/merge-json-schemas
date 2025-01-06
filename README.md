@@ -1,6 +1,10 @@
 # @fastify/merge-json-schemas
 
-__merge-json-schemas__ is a javascript library that build a logical product (AND) for multiple [JSON schemas](https://json-schema.org/draft/2020-12/json-schema-core#name-introduction).
+[![CI](https://github.com/fastify/merge-json-schemas/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/fastify/merge-json-schemas/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@fastify/merge-json-schemas)](https://www.npmjs.com/package/@fastify/merge-json-schemas)
+[![neostandard javascript style](https://img.shields.io/badge/code_style-neostandard-brightgreen?style=flat)](https://github.com/neostandard/neostandard)
+
+__merge-json-schemas__ is a javascript library that builds a logical product (AND) for multiple [JSON schemas](https://json-schema.org/draft/2020-12/json-schema-core#name-introduction).
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -15,7 +19,7 @@ __merge-json-schemas__ is a javascript library that build a logical product (AND
 ## Installation
 
 ```bash
-npm install @fastify/merge-json-schemas
+npm i @fastify/merge-json-schemas
 ```
 
 <a name="usage"></a>
@@ -67,14 +71,14 @@ assert.deepStrictEqual(mergedSchema, {
 
 Builds a logical conjunction (AND) of multiple [JSON schemas](https://json-schema.org/draft/2020-12/json-schema-core#name-introduction).
 
-- `schemas` __\<objects[]\>__ - list of JSON schemas to merge.
-- `options` __\<object\>__ - optional options.
-  - `resolvers` __\<object\>__ - custom resolvers for JSON schema keywords. Each key is the name of a JSON schema keyword. Each value is a resolver function. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options).
-  - `defaultResolver` __\<function\>__ - custom default resolver for JSON schema keywords. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options).
+- `schemas` __\<objects[]\>__ - list of JSON schemas to merge
+- `options` __\<object\>__ - optional options
+  - `resolvers` __\<object\>__ - custom resolvers for JSON schema keywords. Each key is the name of a JSON schema keyword. Each value is a resolver function. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options)
+  - `defaultResolver` __\<function\>__ - custom default resolver for JSON schema keywords. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options)
   - `onConflict` __\<string\>__ - action to take when a conflict is found. Used by the default `defaultResolver`. Default is `throw`. Possible values are:
-    - `throw` - throws an error if found a multiple different schemas for the same keyword.
-    - `ignore` - do nothing if found a multiple different schemas for the same keyword.
-    - `first` - use the value of the first schema if found a multiple different schemas for the same keyword.
+    - `throw` - throws an error multiple different schemas for the same keyword are found
+    - `ignore` - do nothing if multiple different schemas for the same keyword are found
+    - `first` - use the value of the first schema if multiple different schemas for the same keyword are found
 
 #### resolvers
 
@@ -84,19 +88,19 @@ A list of default resolvers that __merge-json-schema__ uses to merge JSON schema
 
 A default resolver that __merge-json-schema__ uses to merge JSON schemas. Default resolver is used when no custom resolver is defined for a JSON schema keyword. By default, the default resolver works as follows:
 
-- If only one schema contains the keyword, the value of the keyword is used as the merged value.
-- If multiple schemas contain the exact same value for the keyword, the value of the keyword is used as the merged value.
-- If multiple schemas contain different values for the keyword, it throws an error.
+- If only one schema contains the keyword, the value of the keyword is used as the merged value
+- If multiple schemas contain the exact same value for the keyword, the value of the keyword is used as the merged value
+- If multiple schemas contain different values for the keyword, it throws an error
 
 #### keywordResolver (keyword, values, mergedSchema, parentSchemas, options)
 
 __merge-json-schema__ uses a set of resolvers to merge JSON schemas. Each resolver is associated with a JSON schema keyword. The resolver is called when the keyword is found in the schemas to merge. The resolver is called with the following arguments:
 
-- `keyword` __\<string\>__ - the name of the keyword to merge.
-- `values` __\<any[]\>__ - the values of the keyword to merge. The length of the array is equal to the number of schemas to merge. If a schema does not contain the keyword, the value is `undefined`.
-- `mergedSchema` __\<object\>__ - an instance of the merged schema.
-- `parentSchemas` __\<object[]\>__ - the list of parent schemas.
-- `options` __\<object\>__ - the options passed to `mergeSchemas`.
+- `keyword` __\<string\>__ - the name of the keyword to merge
+- `values` __\<any[]\>__ - the values of the keyword to merge. The length of the array is equal to the number of schemas to merge. If a schema does not contain the keyword, the value is `undefined`
+- `mergedSchema` __\<object\>__ - an instance of the merged schema
+- `parentSchemas` __\<object[]\>__ - the list of parent schemas
+- `options` __\<object\>__ - the options passed to `mergeSchemas`
 
 The resolver must set the merged value of the `keyword` in the `mergedSchema` object.
 
@@ -112,4 +116,4 @@ function minNumberResolver (keyword, values, mergedSchema) {
 
 ## License
 
-MIT
+Licensed under [MIT](./LICENSE).
