@@ -4,7 +4,7 @@
 [![npm version](https://img.shields.io/npm/v/@fastify/merge-json-schemas)](https://www.npmjs.com/package/@fastify/merge-json-schemas)
 [![neostandard javascript style](https://img.shields.io/badge/code_style-neostandard-brightgreen?style=flat)](https://github.com/neostandard/neostandard)
 
-__merge-json-schemas__ is a javascript library that builds a logical product (AND) for multiple [JSON schemas](https://json-schema.org/draft/2020-12/json-schema-core#name-introduction).
+__merge-json-schemas__ is a JavaScript library that builds a logical product (AND) for multiple [JSON schemas](https://json-schema.org/draft/2020-12/json-schema-core#name-introduction).
 
 - [Installation](#installation)
 - [Usage](#usage)
