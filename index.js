@@ -46,7 +46,7 @@ const keywordsResolvers = {
   contains: mergeSchemasResolver
 }
 
-function mergeSchemasResolver (keyword, values, mergedSchema, schemas, options) {
+function mergeSchemasResolver (keyword, values, mergedSchema, _schemas, options) {
   mergedSchema[keyword] = _mergeSchemas(values, options)
 }
 
@@ -66,7 +66,7 @@ function cartesianProduct (arrays) {
   return result
 }
 
-function mergeOneOf (keyword, values, mergedSchema, schemas, options) {
+function mergeOneOf (keyword, values, mergedSchema, _schemas, options) {
   if (values.length === 1) {
     mergedSchema[keyword] = values[0]
     return
@@ -181,7 +181,7 @@ function getSchemaForProperty (schema, propertyName) {
   return additionalProperties
 }
 
-function mergeProperties (keyword, values, mergedSchema, schemas, options) {
+function mergeProperties (keyword, _values, mergedSchema, schemas, options) {
   const foundProperties = {}
   for (const currentSchema of schemas) {
     const properties = currentSchema.properties ?? {}
@@ -210,7 +210,7 @@ function mergeProperties (keyword, values, mergedSchema, schemas, options) {
   mergedSchema[keyword] = mergedProperties
 }
 
-function mergeObjects (keyword, values, mergedSchema, schemas, options) {
+function mergeObjects (keyword, values, mergedSchema, _schemas, options) {
   const objectsProperties = {}
 
   for (const properties of values) {
@@ -232,7 +232,7 @@ function mergeObjects (keyword, values, mergedSchema, schemas, options) {
   mergedSchema[keyword] = mergedProperties
 }
 
-function mergeIfThenElseSchemas (keyword, values, mergedSchema, schemas, options) {
+function mergeIfThenElseSchemas (_keyword, _values, mergedSchema, schemas, options) {
   for (let i = 0; i < schemas.length; i++) {
     const subSchema = {
       if: schemas[i].if,
@@ -313,7 +313,7 @@ function _mergeSchemas (schemas, options) {
   return mergedSchema
 }
 
-function defaultResolver (keyword, values, mergedSchema, schemas, options) {
+function defaultResolver (keyword, values, mergedSchema, _schemas, options) {
   const onConflict = options.onConflict ?? 'throw'
 
   if (values.length === 1 || onConflict === 'first') {
