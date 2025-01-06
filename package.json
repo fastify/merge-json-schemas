@@ -1,6 +1,6 @@
 {
   "name": "@fastify/merge-json-schemas",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Builds a logical conjunction (AND) of multiple JSON schemas",
   "main": "index.js",
   "type": "commonjs",
