@@ -23,6 +23,22 @@
     "allOf"
   ],
   "author": "Ivan Tymoshenko <ivan@tymoshenko.me>",
+  "contributors": [
+    {
+      "name": "Matteo Collina",
+      "email": "hello@matteocollina.com"
+    },
+    {
+      "name": "Frazer Smith",
+      "email": "frazer.dev@icloud.com",
+      "url": "https://github.com/fdawgs"
+    },
+    {
+      "name": "Gürgün Dayıoğlu",
+      "email": "hey@gurgun.day",
+      "url": "https://heyhey.to/G"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fastify/merge-json-schemas/issues"
