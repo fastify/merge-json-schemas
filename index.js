@@ -350,8 +350,7 @@ function mergeSchemas (schemas, options = {}) {
 
   options.resolvers = { ...keywordsResolvers, ...options.resolvers }
 
-  const mergedSchema = _mergeSchemas(schemas, options)
-  return mergedSchema
+  return _mergeSchemas(schemas, options)
 }
 
 module.exports = { mergeSchemas, keywordsResolvers, defaultResolver, ...errors }
