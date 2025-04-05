@@ -59,3 +59,15 @@ export function mergeSchemas (schemas: any[], options?: MergeOptions): any
 
 export const keywordsResolvers: KeywordResolvers
 export const defaultResolver: KeywordResolver
+export const resolvers: {
+  arraysIntersection: KeywordResolver;
+  hybridArraysIntersection: KeywordResolver;
+  arraysUnion: KeywordResolver;
+  minNumber: KeywordResolver;
+  maxNumber: KeywordResolver;
+  commonMultiple: KeywordResolver;
+  allEqual: KeywordResolver;
+  booleanAnd: KeywordResolver;
+  booleanOr: KeywordResolver;
+  skip: KeywordResolver;
+};
