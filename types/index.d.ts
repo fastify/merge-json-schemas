@@ -70,4 +70,4 @@ export const resolvers: {
   booleanAnd: KeywordResolver;
   booleanOr: KeywordResolver;
   skip: KeywordResolver;
-};
+}
