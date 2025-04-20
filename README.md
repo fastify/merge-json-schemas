@@ -82,7 +82,7 @@ Builds a logical conjunction (AND) of multiple [JSON schemas](https://json-schem
 
 #### resolvers
 
-A list of default resolvers that __merge-json-schema__ uses to merge JSON schemas. You can override the default resolvers by passing a list of custom resolvers in the `options` argument of `mergeSchemas`. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options).
+A list of default resolvers that __merge-json-schema__ uses to merge JSON schemas. You can override the default resolvers by passing resolver functions against the keywords in the `options` argument of `mergeSchemas`. You may either use your own custom resolver functions or utilise the ones exposed as `resolvers` from the library. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options).
 
 #### defaultResolver
 
