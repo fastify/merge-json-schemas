@@ -353,4 +353,4 @@ function mergeSchemas (schemas, options = {}) {
   return _mergeSchemas(schemas, options)
 }
 
-module.exports = { mergeSchemas, keywordsResolvers, defaultResolver, ...errors }
+module.exports = { mergeSchemas, keywordsResolvers, defaultResolver, resolvers, ...errors }
