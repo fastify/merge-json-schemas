@@ -1,4 +1,4 @@
-import { mergeSchemas, MergeOptions } from '..'
+import { mergeSchemas, MergeOptions, resolvers, KeywordResolver } from '..'
 import { expectType } from 'tsd'
 
 {
@@ -50,3 +50,14 @@ import { expectType } from 'tsd'
 
   mergeSchemas([schema1, schema2], mergeOptions)
 }
+
+expectType<KeywordResolver>(resolvers.arraysIntersection)
+expectType<KeywordResolver>(resolvers.hybridArraysIntersection)
+expectType<KeywordResolver>(resolvers.arraysUnion)
+expectType<KeywordResolver>(resolvers.minNumber)
+expectType<KeywordResolver>(resolvers.maxNumber)
+expectType<KeywordResolver>(resolvers.commonMultiple)
+expectType<KeywordResolver>(resolvers.allEqual)
+expectType<KeywordResolver>(resolvers.booleanAnd)
+expectType<KeywordResolver>(resolvers.booleanOr)
+expectType<KeywordResolver>(resolvers.skip)
