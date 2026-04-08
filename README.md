@@ -82,7 +82,21 @@ Builds a logical conjunction (AND) of multiple [JSON schemas](https://json-schem
 
 #### resolvers
 
-A list of default resolvers that __merge-json-schema__ uses to merge JSON schemas. You can override the default resolvers by passing a list of custom resolvers in the `options` argument of `mergeSchemas`. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options).
+A list of default resolvers that __merge-json-schema__ uses to merge JSON schemas. You can override the default resolvers by passing resolver functions against the keywords in the `options` argument of `mergeSchemas`. You may either pass in your own custom resolver functions or utilize the ones exposed via the `resolvers` object from the library. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options).
+
+__Example:__ Overriding the default resolver(intersection) with a union function for the `enum` keyword. 
+
+```javascript
+const schemaMerger = require('@fastify/merge-json-schemas');
+const mergedSchema = schemaMerger.mergeSchemas(
+    schemas,
+    {
+      resolvers: {
+        enum: schemaMerger.resolvers.arraysUnion
+      },
+    }
+);
+```
 
 #### defaultResolver
 
