@@ -1,5 +1,5 @@
-import { mergeSchemas, MergeOptions } from '..'
-import { expectType } from 'tsd'
+import { mergeSchemas, type MergeOptions } from '..'
+import { expect } from 'tstyche'
 
 {
   const schema1 = { type: 'string', enum: ['foo', 'bar'] }
@@ -21,11 +21,11 @@ import { expectType } from 'tsd'
         parentSchemas: any[],
         options: MergeOptions
       ) => {
-        expectType<string>(keyword)
-        expectType<any[]>(keywordValues)
-        expectType<any>(mergedSchema)
-        expectType<any[]>(parentSchemas)
-        expectType<MergeOptions>(options)
+        expect(keyword).type.toBe<string>()
+        expect<typeof keywordValues>().type.toBe<any[]>()
+        expect<typeof mergedSchema>().type.toBe<any>()
+        expect<typeof parentSchemas>().type.toBe<any[]>()
+        expect(options).type.toBe<MergeOptions>()
 
         return keywordValues
       }
@@ -37,11 +37,12 @@ import { expectType } from 'tsd'
       parentSchemas: any[],
       options: MergeOptions
     ) => {
-      expectType<string>(keyword)
-      expectType<any[]>(keywordValues)
-      expectType<any>(mergedSchema)
-      expectType<any[]>(parentSchemas)
-      expectType<MergeOptions>(options)
+      expect(keyword).type.toBe<string>()
+      expect<typeof keywordValues>().type.toBe<any[]>()
+      expect<typeof mergedSchema>().type.toBe<any>()
+      expect<typeof parentSchemas>().type.toBe<any[]>()
+      expect(options).type.toBe<MergeOptions>()
+      expect(options).type.toBe<MergeOptions>()
 
       return keywordValues
     },
