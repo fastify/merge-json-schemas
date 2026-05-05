@@ -15,32 +15,32 @@ import { expect } from 'tstyche'
   const mergeOptions: MergeOptions = {
     resolvers: {
       enum: (
-        keyword: string,
-        keywordValues: any[],
-        mergedSchema: any,
-        parentSchemas: any[],
-        options: MergeOptions
+        keyword,
+        keywordValues,
+        mergedSchema,
+        parentSchemas,
+        options
       ) => {
         expect(keyword).type.toBe<string>()
-        expect<typeof keywordValues>().type.toBe<any[]>()
-        expect<typeof mergedSchema>().type.toBe<any>()
-        expect<typeof parentSchemas>().type.toBe<any[]>()
+        expect(keywordValues).type.toBe<any[]>()
+        expect(mergedSchema).type.toBe<any>()
+        expect(parentSchemas).type.toBe<any[]>()
         expect(options).type.toBe<MergeOptions>()
 
         return keywordValues
       }
     },
     defaultResolver: (
-      keyword: string,
-      keywordValues: any[],
-      mergedSchema: any,
-      parentSchemas: any[],
-      options: MergeOptions
+      keyword,
+      keywordValues,
+      mergedSchema,
+      parentSchemas,
+      options
     ) => {
       expect(keyword).type.toBe<string>()
-      expect<typeof keywordValues>().type.toBe<any[]>()
-      expect<typeof mergedSchema>().type.toBe<any>()
-      expect<typeof parentSchemas>().type.toBe<any[]>()
+      expect(keywordValues).type.toBe<any[]>()
+      expect(mergedSchema).type.toBe<any>()
+      expect(parentSchemas).type.toBe<any[]>()
       expect(options).type.toBe<MergeOptions>()
       expect(options).type.toBe<MergeOptions>()
 
