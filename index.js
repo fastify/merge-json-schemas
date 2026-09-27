@@ -253,12 +253,8 @@ function mergeIfThenElseSchemas (_keyword, _values, mergedSchema, schemas, optio
       continue
     }
 
-    if (mergedSchema.then !== undefined) {
-      mergedSchema.then = _mergeSchemas([mergedSchema.then, subSchema], options)
-    }
-    if (mergedSchema.else !== undefined) {
-      mergedSchema.else = _mergeSchemas([mergedSchema.else, subSchema], options)
-    }
+    mergedSchema.then = _mergeSchemas([mergedSchema.then ?? {}, subSchema], options)
+    mergedSchema.else = _mergeSchemas([mergedSchema.else ?? {}, subSchema], options)
   }
 }
 
