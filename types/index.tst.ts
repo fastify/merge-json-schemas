@@ -46,7 +46,8 @@ import { expect } from 'tstyche'
 
       return keywordValues
     },
-    onConflict: 'throw'
+    onConflict: 'throw',
+    optimizeDiscriminators: true
   }
 
   mergeSchemas([schema1, schema2], mergeOptions)
