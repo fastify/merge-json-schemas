@@ -380,6 +380,10 @@ test('should two if/then keyword schemas', () => {
           bar2: { type: 'string', const: 'bar2' }
         }
       }
+    },
+    else: {
+      if: schema2.if,
+      then: schema2.then
     }
   })
 })
@@ -420,6 +424,10 @@ test('should two if/else keyword schemas', () => {
       properties: {
         foo1: { type: 'string', const: 'foo1' }
       }
+    },
+    then: {
+      if: schema2.if,
+      else: schema2.else
     },
     else: {
       properties: {
@@ -490,6 +498,10 @@ test('should two if/then and if/else keyword schemas', () => {
           bar2: { type: 'string', const: 'bar2' }
         }
       }
+    },
+    else: {
+      if: schema2.if,
+      else: schema2.else
     }
   })
 })
@@ -531,6 +543,10 @@ test('should two if/else and if/then keyword schemas', () => {
         foo1: { type: 'string', const: 'foo1' }
       }
     },
+    then: {
+      if: schema2.if,
+      then: schema2.then
+    },
     else: {
       properties: {
         bar1: { type: 'string', const: 'bar1' }
@@ -547,4 +563,51 @@ test('should two if/else and if/then keyword schemas', () => {
       }
     }
   })
+})
+
+test('should preserve later conditions when the first if has no branches', () => {
+  const schema1 = { if: { const: 'foo' } }
+  const schema2 = {
+    if: { type: 'string' },
+    then: { minLength: 3 },
+    else: { minimum: 3 }
+  }
+  const originalSchemas = JSON.stringify([schema1, schema2])
+
+  assert.deepStrictEqual(mergeSchemas([schema1, schema2]), {
+    if: schema1.if,
+    then: schema2,
+    else: schema2
+  })
+  assert.equal(JSON.stringify([schema1, schema2]), originalSchemas)
+})
+
+test('should preserve false branches when merging later conditions', () => {
+  const schema1 = {
+    if: { const: 'foo' },
+    then: false,
+    else: false
+  }
+  const schema2 = {
+    if: { type: 'string' },
+    then: { minLength: 3 }
+  }
+
+  assert.deepStrictEqual(mergeSchemas([schema1, schema2]), schema1)
+})
+
+test('should not attach orphan then and else to another schema condition', () => {
+  const schema1 = {
+    if: { const: 'foo' },
+    then: { type: 'string' }
+  }
+  const schema2 = {
+    if: { const: 'bar' },
+    then: { minLength: 3 }
+  }
+
+  assert.deepStrictEqual(
+    mergeSchemas([schema1, { then: false, else: false }, schema2]),
+    mergeSchemas([schema1, schema2])
+  )
 })

@@ -2,6 +2,7 @@
 
 const { dequal: deepEqual } = require('dequal')
 const resolvers = require('./lib/resolvers')
+const mergeDiscriminator = require('./lib/merge-discriminator')
 const errors = require('./lib/errors')
 
 const keywordsResolvers = {
@@ -233,6 +234,14 @@ function mergeObjects (keyword, values, mergedSchema, _schemas, options) {
 }
 
 function mergeIfThenElseSchemas (_keyword, _values, mergedSchema, schemas, options) {
+  if (options.optimizeDiscriminators) {
+    const discriminator = mergeDiscriminator(schemas, schemas => _mergeSchemas(schemas, options))
+    if (discriminator !== undefined) {
+      Object.assign(mergedSchema, discriminator)
+      return
+    }
+  }
+
   for (let i = 0; i < schemas.length; i++) {
     const subSchema = {
       if: schemas[i].if,
@@ -253,12 +262,8 @@ function mergeIfThenElseSchemas (_keyword, _values, mergedSchema, schemas, optio
       continue
     }
 
-    if (mergedSchema.then !== undefined) {
-      mergedSchema.then = _mergeSchemas([mergedSchema.then, subSchema], options)
-    }
-    if (mergedSchema.else !== undefined) {
-      mergedSchema.else = _mergeSchemas([mergedSchema.else, subSchema], options)
-    }
+    mergedSchema.then = _mergeSchemas([mergedSchema.then ?? {}, subSchema], options)
+    mergedSchema.else = _mergeSchemas([mergedSchema.else ?? {}, subSchema], options)
   }
 }
 

@@ -75,6 +75,7 @@ Builds a logical conjunction (AND) of multiple [JSON schemas](https://json-schem
 - `options` __\<object\>__ - optional options
   - `resolvers` __\<object\>__ - custom resolvers for JSON schema keywords. Each key is the name of a JSON schema keyword. Each value is a resolver function. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options)
   - `defaultResolver` __\<function\>__ - custom default resolver for JSON schema keywords. See [keywordResolver](#keywordresolver-keyword-values-mergedschema-parentschemas-options)
+  - `optimizeDiscriminators` __\<boolean\>__ - avoid expanding every combination of conditions that test different primitive `const` values on the same property. Default is `false`. Enable only for pure validation: this can change evaluation order and is unsuitable for validators that modify data (for example, AJV's `coerceTypes`, `useDefaults`, `removeAdditional`, or custom modifying keywords). Conditions with different property names, types, or required/type flags use the regular resolver. Branches containing defaults, references, or schema IDs also use the regular resolver.
   - `onConflict` __\<string\>__ - action to take when a conflict is found. Used by the default `defaultResolver`. Default is `throw`. Possible values are:
     - `throw` - throws an error multiple different schemas for the same keyword are found
     - `ignore` - do nothing if multiple different schemas for the same keyword are found

@@ -51,6 +51,7 @@ export type KeywordResolvers = {
 export type MergeOptions = {
   defaultResolver?: KeywordResolver,
   resolvers?: Partial<KeywordResolvers>,
+  optimizeDiscriminators?: boolean,
   // enum of ["throw", "skip", "first"]
   onConflict?: 'throw' | 'skip' | 'first'
 }
