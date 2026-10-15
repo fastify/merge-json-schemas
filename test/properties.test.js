@@ -23,6 +23,36 @@ test('should merge empty schema and properties keyword', () => {
   })
 })
 
+test('should preserve a property containing a $ref when merging closed schemas', () => {
+  const schema1 = {
+    type: 'object',
+    additionalProperties: false,
+    properties: {
+      processors: {
+        type: 'array',
+        items: { $ref: '#/$defs/LogRecordProcessor' }
+      }
+    },
+    $defs: {
+      LogRecordProcessor: { type: 'object' }
+    }
+  }
+  const schema2 = {
+    type: 'object',
+    additionalProperties: false,
+    properties: {},
+    $defs: {
+      BatchLogRecordProcessor: { type: 'object' }
+    }
+  }
+
+  const mergedSchema = mergeSchemas([schema1, schema2], { defaultResolver })
+  assert.deepStrictEqual(mergedSchema.properties.processors, {
+    type: 'array',
+    items: { $ref: '#/$defs/LogRecordProcessor' }
+  })
+})
+
 test('should merge two equal property schemas', () => {
   const schema1 = {
     type: 'object',
@@ -129,7 +159,7 @@ test('should merge properties if one schema has additionalProperties = false', (
     properties: {
       foo: { type: 'string', enum: ['42'] },
       bar: { type: 'number' },
-      baz: false
+      baz: { type: 'string' }
     },
     additionalProperties: false
   })
@@ -159,8 +189,8 @@ test('should merge properties if both schemas have additionalProperties = false'
     type: 'object',
     properties: {
       foo: { type: 'string', enum: ['42'] },
-      bar: false,
-      baz: false
+      bar: { type: 'number' },
+      baz: { type: 'string' }
     },
     additionalProperties: false
   })

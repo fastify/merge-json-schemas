@@ -178,6 +178,13 @@ function getSchemaForProperty (schema, propertyName) {
     }
   }
 
+  // Properties declared in another schema become explicit properties in the
+  // merged schema, so a false additionalProperties value must not turn their
+  // merged property schema into false.
+  if (additionalProperties === false) {
+    return undefined
+  }
+
   return additionalProperties
 }
 
